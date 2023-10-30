@@ -46,8 +46,11 @@ Route::prefix('prototype')->name('prototype.')->group(function (){
     yang berada di resources/js/pages/protype */
     route::get('/register', function() {
         return Inertia::render('Prototype/Register');
-       
     })->name('register');
+
+    route::get('/dashboard', function() {
+        return Inertia::render('Prototype/Dashboard');
+    })->name('dashboard');
     
 });
 
