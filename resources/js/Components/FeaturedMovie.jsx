@@ -1,13 +1,13 @@
-import PropType from 'prop-types'
+import { Link } from "@inertiajs/react";
+import PropType from "prop-types";
 
 FeaturedMovie.propTypes = {
-    slug : PropType.string.isRequired,
-    name : PropType.string.isRequired,
-    category : PropType.string.isRequired,
-    thumbnail : PropType.string.isRequired,
-    rating : PropType.number,
-
-}
+    slug: PropType.string.isRequired,
+    name: PropType.string.isRequired,
+    category: PropType.string.isRequired,
+    thumbnail: PropType.string.isRequired,
+    rating: PropType.number,
+};
 export default function FeaturedMovie({
     slug,
     name,
@@ -28,7 +28,7 @@ export default function FeaturedMovie({
                 <div className="p-[30px] flex items-center gap-1">
                     <img src="/icons/ic_star.svg" alt="" />
                     <span className="text-sm font-medium text-white mt-1">
-                      {rating.toFixed(1)}/5.0
+                        {rating.toFixed(1)}/5.0
                     </span>
                 </div>
             </div>
@@ -42,14 +42,17 @@ export default function FeaturedMovie({
                         {name}
                     </div>
                     <p className="mb-0 text-white text-sm font-light">
-                       {category}
+                        {category}
                     </p>
                 </div>
                 <div className="translate-x-[100px] group-hover:translate-x-0 transition ease-in-out duration-500">
                     <img src="/icons/ic_play.svg" width="50" alt="" />
                 </div>
             </div>
-            <a href={slug} className="inset-0 absolute z-50"></a>
+            <Link
+                href={route("prototype.movie.show", slug)}
+                className="inset-0 absolute z-50"
+            ></Link>
         </div>
     );
 }
