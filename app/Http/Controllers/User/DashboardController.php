@@ -9,7 +9,7 @@ use App\Models\Movie;
 
 class DashboardController extends Controller
 {
-    function index() {
+    public function index() {
 
         $featuredMovies = Movie::whereIsFeatured(true)->get();
         $movies = Movie::all();
