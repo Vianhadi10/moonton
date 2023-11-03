@@ -4,6 +4,7 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import { Link, Head, useForm } from "@inertiajs/react";
 
 export default function Index({ auth, flashMessage, movies }) {
+    const { delete: destroy, put } = useForm();
     return (
         <Authenticated auth={auth}>
             <Head title="List of Movie" />
@@ -52,7 +53,7 @@ export default function Index({ auth, flashMessage, movies }) {
                             <td>
                                 <div
                                     onClick={() => {
-                                        movie.deleted_at
+                                        movie.deleted_at //method buat destroy agar beralih ke route
                                             ? put(
                                                   route(
                                                       "admin.dashboard.movie.restore",
@@ -67,9 +68,9 @@ export default function Index({ auth, flashMessage, movies }) {
                                               );
                                     }}
                                 >
-                                    <Button type="button" variant="danger">
+                                    <Button type="button" variant="danger"> 
                                         {movie.deleted_at
-                                            ? "Restore"
+                                            ? "Restore"    //mengubah nama tombol 
                                             : "Delete"}
                                     </Button>
                                 </div>
