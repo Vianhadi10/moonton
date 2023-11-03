@@ -7,6 +7,7 @@ use App\Http\Controllers\User\SubscriptionPlanController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,12 +52,17 @@ Route::get('/dashboard', function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });*/
 
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.dashboard.')->group(function () {
+    Route::put('movie/{movie}/restore', [AdminMovieController::class, 'restore'])->name('movie.restore');
+    Route::resource('movie', AdminMovieController::class);
+});
+/*
 Route::prefix('prototype')->name('prototype.')->group(function (){
     route::get('/login', function() {
         return Inertia::render('Prototype/Login');
     })->name('login');/* untuk sign in akan menggunakan url route, dimana
     dia akan menngembalikan halaman javascrpt / react dari folder prototype
-    yang berada di resources/js/pages/protype */
+    yang berada di resources/js/pages/protype 
     route::get('/register', function() {
         return Inertia::render('Prototype/Register');
     })->name('register');
@@ -73,6 +79,6 @@ Route::prefix('prototype')->name('prototype.')->group(function (){
         return Inertia::render('Prototype/Movie/Show');
     })->name('movie.show');
     
-});
+});*/
 
 require __DIR__.'/auth.php';

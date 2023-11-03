@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import Input from "@/Components/Input";
 import Label from "@/Components/Label";
 import Button from "@/Components/Button";
 import InputError from "@/Components/InputError";
 import TextInput from "@/Components/Input";
+import ValidationErrors from "@/Components/ValidationErrors";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Login() {
@@ -50,7 +50,7 @@ export default function Login() {
                                 Explore our new movies and get <br />
                                 the better insight for your life
                             </p>
-                            <InputError errors={errors} />
+                            <ValidationErrors errors={errors} />
                         </div>
                         <form className="w-[370px]" onSubmit={submit}>
                             <div className="flex flex-col gap-6">
